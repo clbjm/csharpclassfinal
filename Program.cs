@@ -13,15 +13,17 @@ namespace ConsoleApplication
             int Char_EXP_Full = 100;
             int Char_Level_Current = 1;
 
-            int Char_Mouse_Left_Right = 10;
-            int Char_Mouse_Up_Down = 10;
+            int Char_Move_Left_Right = 10;
+            int Char_Move_Up_Down = 10;
 
-
+            int Game_Over = 0;
             //string:
             string Char_Name = "Class inc.";
-
+            do 
+            {
             //draw GUI:
                 //draw stats:
+                Console.SetCursorPosition(0, 0);
             Console.WriteLine("");
             Console.SetCursorPosition(5, 1);
             Console.WriteLine("Name: {0}", Char_Name);
@@ -41,16 +43,27 @@ namespace ConsoleApplication
                     Console.Write("|");
                 }
                 Console.WriteLine("________________");
+                Console.SetCursorPosition(0,28);
+
                 ConsoleKeyInfo KeyInfo;
                 KeyInfo = Console.ReadKey(true);
                 switch (KeyInfo.Key)
                 {
                     case ConsoleKey.RightArrow:
+                    for(int a = 0; a <= 2; a++)
+                    {
+                        for(int b = 0; b <= 2; b++)
+                        {
+                            Console.SetCursorPosition(b, a);
+                            Console.Write(" ");
+                        }
+                    }
                     Char_Move_Left_Right++;
-                    Console.SetCursorPosition(Char_Mouse_Left_Right, Char_Move_Up_Down);
-                    Console.WriteLine("X");
+                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                    Console.Write("X");
                         break;
                 }
+            } while(Game_Over == 0);
 
 
 
@@ -62,6 +75,6 @@ namespace ConsoleApplication
 
 
             Console.ReadLine();
-        }
+    }
     }
 }
