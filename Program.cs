@@ -55,12 +55,16 @@ namespace ConsoleApplication
                         for(int b = 0; b <= 2; b++)
                         {
                             Console.SetCursorPosition(b, a);
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write("X");
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.Write(" ");
                         }
                     }
                     Char_Move_Left_Right++;
                     Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
                     Console.Write("X");
+
                         break;
                 }
             } while(Game_Over == 0);
