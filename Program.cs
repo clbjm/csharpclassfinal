@@ -12,13 +12,18 @@ namespace ConsoleApplication
             int Char_EXP_Current = 110;
             double Char_EXP_Full = 100;
             int Char_Level_Current = 1;
-
             int Char_Move_Left_Right = 10;
             int Char_Move_Up_Down = 10;
-
             int Game_Over = 0;
+
             //string:
             string Char_Name = "Class inc.";
+            string Current_Command;
+
+
+            //array:
+            string[,] Inventory = new string[20,10];
+
             do 
             {
                 //count EXP:
@@ -55,30 +60,34 @@ namespace ConsoleApplication
                 Console.WriteLine("________________");
                 Console.SetCursorPosition(0,28);
 
-                //player controls
-                ConsoleKeyInfo KeyInfo;
-                KeyInfo = Console.ReadKey(true);
-                switch (KeyInfo.Key)
-                {
-                    case ConsoleKey.RightArrow:
-                    Char_Move_Left_Right++;
-                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
-                    Console.Write("X");
-                    Console.SetCursorPosition(Char_Move_Left_Right - 1, Char_Move_Up_Down);
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("X");
-                    Console.ForegroundColor = ConsoleColor.White;
+            //player controls
+            ConsoleKeyInfo KeyInfo;
+            KeyInfo = Console.ReadKey(true);
+            switch (KeyInfo.Key)
+            {
+                case ConsoleKey.RightArrow:
+                    if (Char_Move_Left_Right < 118)
+                    {
+                        Char_Move_Left_Right++;
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                        Console.Write("X");
+                        Console.SetCursorPosition(Char_Move_Left_Right - 1, Char_Move_Up_Down);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("X");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                        else { }
                         break;
-                        case ConsoleKey.LeftArrow:
+                    case ConsoleKey.LeftArrow:
                         if (Char_Move_Left_Right > 1)
                         {
-                    Char_Move_Left_Right--;
-                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
-                    Console.Write("X");
-                    Console.SetCursorPosition(Char_Move_Left_Right +1, Char_Move_Up_Down);
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("X");
-                    Console.ForegroundColor = ConsoleColor.White;
+                            Char_Move_Left_Right--;
+                            Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                            Console.Write("X");
+                            Console.SetCursorPosition(Char_Move_Left_Right +1, Char_Move_Up_Down);
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write("X");
+                            Console.ForegroundColor = ConsoleColor.White;
                         }
                         else { }
                         break;
@@ -98,15 +107,15 @@ namespace ConsoleApplication
                     case ConsoleKey.DownArrow:
                     if(Char_Move_Up_Down < 27)
                     {
-                    Char_Move_Up_Down++;
-                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
-                    Console.Write("X");
-                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down - 1);
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("X");
-                    Console.ForegroundColor = ConsoleColor.White;
+                        Char_Move_Up_Down++;
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                        Console.Write("X");
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down - 1);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("X");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
-                    else{ }
+                        else{ }
                         break;
                     case ConsoleKey.Spacebar:
                         Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
@@ -122,15 +131,31 @@ namespace ConsoleApplication
                         Console.Write("--");
                         break;
                 }
+
+                //command options default:
+                Current_Command = Console.ReadLine().ToUpper();
+                if(Current_Command == "INVENTORY" || Current_Command == "INV")
+                {
+                    for(int a = 0; a <= 20; a++)
+                    {
+                        for(int b = 0; b <= 10; b++)
+                        {
+                            if(b <= 10)
+                            {
+                                Console.SetCursorPosition(5,5);
+                                Console.Write("{0}",Inventory[b,a]);
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
+                }
+
+
+
             } while(Game_Over == 0);
-
-
-
-
-
-
-
-
 
 
             Console.ReadLine();
