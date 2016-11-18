@@ -21,6 +21,12 @@ namespace ConsoleApplication
             string Char_Name = "Class inc.";
             do 
             {
+                //count EXP:
+                if(Char_EXP_Current >= Char_EXP_Full)
+                {
+                    Char_EXP_Current = Char_EXP_Current - Char_EXP_Full;
+                }
+
             //draw GUI:
                 //draw stats:
                 Console.SetCursorPosition(0, 0);
@@ -86,13 +92,16 @@ namespace ConsoleApplication
                     Console.Write("X");
                     Console.ForegroundColor = ConsoleColor.White;
                         break;
-                    case Console.Spacebar:
+                    case ConsoleKey.Spacebar:
                         Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
                         Console.Write("X");
+                        System.Threading.Thread.Sleep(30);
                         Console.SetCursorPosition(Char_Move_Left_Right + 1, Char_Move_Up_Down);
                         Console.Write("-");
+                        System.Threading.Thread.Sleep(30);
                         Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down-1);
                         Console.Write("|");
+                        System.Threading.Thread.Sleep(30);
                         Console.SetCursorPosition(Char_Move_Left_Right -1, Char_Move_Up_Down);
                         Console.Write("--");
                         break;
@@ -111,3 +120,4 @@ namespace ConsoleApplication
             Console.ReadLine();
     }
     }
+}
