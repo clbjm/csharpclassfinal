@@ -9,8 +9,8 @@ namespace ConsoleApplication
             //ints:
             int Char_HP_Current = 20;
             int Char_HP_Full = 100;
-            int Char_EXP_Current = 10;
-            int Char_EXP_Full = 100;
+            int Char_EXP_Current = 110;
+            double Char_EXP_Full = 100;
             int Char_Level_Current = 1;
 
             int Char_Move_Left_Right = 10;
@@ -24,19 +24,23 @@ namespace ConsoleApplication
                 //count EXP:
                 if(Char_EXP_Current >= Char_EXP_Full)
                 {
-                    Char_EXP_Current = Char_EXP_Current - Char_EXP_Full;
+                    Char_EXP_Current = Convert.ToInt32(Char_EXP_Current - Char_EXP_Full);
+                    Char_Level_Current++;
+                    Char_EXP_Full = Char_EXP_Full * 1.20;
                 }
 
             //draw GUI:
                 //draw stats:
                 Console.SetCursorPosition(0, 0);
             Console.WriteLine("");
-            Console.SetCursorPosition(5, 1);
+            Console.SetCursorPosition(7, 1);
             Console.WriteLine("Name: {0}", Char_Name);
-            Console.SetCursorPosition(35, 1);
+            Console.SetCursorPosition(37, 1);
             Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
-            Console.SetCursorPosition(60,1);
+            Console.SetCursorPosition(67,1);
             Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
+            Console.SetCursorPosition(97,1);
+            Console.WriteLine("Level: {0}", Char_Level_Current);
             Console.WriteLine("_____________________");
             Console.SetCursorPosition(1, 1);
             Console.WriteLine("/");
@@ -66,6 +70,8 @@ namespace ConsoleApplication
                     Console.ForegroundColor = ConsoleColor.White;
                         break;
                         case ConsoleKey.LeftArrow:
+                        if (Char_Move_Left_Right > 1)
+                        {
                     Char_Move_Left_Right--;
                     Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
                     Console.Write("X");
@@ -73,8 +79,12 @@ namespace ConsoleApplication
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write("X");
                     Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else { }
                         break;
-                        case ConsoleKey.UpArrow:
+                case ConsoleKey.UpArrow:
+                    if(Char_Move_Up_Down > 3)
+                {
                     Char_Move_Up_Down--;
                     Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
                     Console.Write("X");
@@ -82,8 +92,12 @@ namespace ConsoleApplication
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write("X");
                     Console.ForegroundColor = ConsoleColor.White;
+                }
+                        else { }
                         break;
-                        case ConsoleKey.DownArrow:
+                    case ConsoleKey.DownArrow:
+                    if(Char_Move_Up_Down < 27)
+                    {
                     Char_Move_Up_Down++;
                     Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
                     Console.Write("X");
@@ -91,6 +105,8 @@ namespace ConsoleApplication
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write("X");
                     Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else{ }
                         break;
                     case ConsoleKey.Spacebar:
                         Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
