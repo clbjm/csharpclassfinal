@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace ConsoleApplication
 {
@@ -22,7 +22,7 @@ namespace ConsoleApplication
 
 
             //array:
-            string[,] Inventory = new string[20,10];
+            string[,] Inventory = new string[10,14];
 
             do 
             {
@@ -132,18 +132,26 @@ namespace ConsoleApplication
                         break;
                 }
 
+                for(int a = 0; a <= 19; a++)
+                {
+                    for (int b = 0; b <= 9; b++)
+                    {
+                        Inventory[a,b] = "asd";
+                    }
+                }
+
                 //command options default:
                 Current_Command = Console.ReadLine().ToUpper();
                 if(Current_Command == "INVENTORY" || Current_Command == "INV")
                 {
-                    for(int a = 0; a <= 20; a++)
+                    for(int a = 0; a <= 19; a++)
                     {
-                        for(int b = 0; b <= 10; b++)
+                        for(int b = 0; b <= 9; b++)
                         {
-                            if(b <= 10)
+                            if(b <= 9)
                             {
-                                Console.SetCursorPosition(5,5);
-                                Console.Write("{0}",Inventory[b,a]);
+                                Console.SetCursorPosition(5, 5 + a);
+                                Console.Write("{0}", Inventory[b, a]);
                             }
                             else
                             {
