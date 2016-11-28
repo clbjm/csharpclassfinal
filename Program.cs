@@ -19,16 +19,26 @@ namespace ConsoleApplication
             int Char_Move_Left_Right = 10;
             int Char_Move_Up_Down = 10;
             int Game_Over = 0;
+<<<<<<< HEAD
             int Resting_Time;
+=======
+>>>>>>> master
 
             //string:
             string Char_Name = "Class inc.";
             string Current_Command;
+<<<<<<< HEAD
             string Char_Status = "";
 
 
             //array:
             string[,] Inventory = new string[10,20];
+=======
+
+
+            //array:
+            string[,] Inventory = new string[10,14];
+>>>>>>> master
 
             do 
             {
@@ -39,10 +49,13 @@ namespace ConsoleApplication
                     Char_Level_Current++;
                     Char_EXP_Full = Char_EXP_Full * 1.20;
                 }
+<<<<<<< HEAD
                 if(Char_HP_Current > Char_HP_Full)
                 {
                     Char_HP_Current = Char_HP_Full;
                 }
+=======
+>>>>>>> master
 
             //draw GUI:
             //draw stats:
@@ -159,7 +172,11 @@ namespace ConsoleApplication
                     Console.Clear();
                      //draw stats:
                 Console.SetCursorPosition(0, 0);
+<<<<<<< HEAD
             Console.WriteLine(" ________________");
+=======
+            Console.WriteLine("");
+>>>>>>> master
             Console.SetCursorPosition(7, 1);
             Console.WriteLine("Name: {0}", Char_Name);
             Console.SetCursorPosition(37, 1);
@@ -184,6 +201,7 @@ namespace ConsoleApplication
                 Console.WriteLine("________________");
                 Console.SetCursorPosition(0,28);
 
+<<<<<<< HEAD
                     for (int a = 0; a <= 19; a++)
                     {
                         for (int b = 0; b <= 9; b++)
@@ -194,6 +212,108 @@ namespace ConsoleApplication
                                 Console.Write("{0}", Inventory[b, a]);
                             }
                             else { }
+=======
+            //player controls
+            ConsoleKeyInfo KeyInfo;
+            KeyInfo = Console.ReadKey(true);
+            switch (KeyInfo.Key)
+            {
+                case ConsoleKey.RightArrow:
+                    if (Char_Move_Left_Right < 118)
+                    {
+                        Char_Move_Left_Right++;
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                        Console.Write("X");
+                        Console.SetCursorPosition(Char_Move_Left_Right - 1, Char_Move_Up_Down);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("X");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                        else { }
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (Char_Move_Left_Right > 1)
+                        {
+                            Char_Move_Left_Right--;
+                            Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                            Console.Write("X");
+                            Console.SetCursorPosition(Char_Move_Left_Right +1, Char_Move_Up_Down);
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write("X");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else { }
+                        break;
+                case ConsoleKey.UpArrow:
+                    if(Char_Move_Up_Down > 3)
+                {
+                    Char_Move_Up_Down--;
+                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                    Console.Write("X");
+                    Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down+1);
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write("X");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                        else { }
+                        break;
+                    case ConsoleKey.DownArrow:
+                    if(Char_Move_Up_Down < 27)
+                    {
+                        Char_Move_Up_Down++;
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                        Console.Write("X");
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down - 1);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.Write("X");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                        else{ }
+                        break;
+                    case ConsoleKey.Spacebar:
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down);
+                        Console.Write("X");
+                        System.Threading.Thread.Sleep(30);
+                        Console.SetCursorPosition(Char_Move_Left_Right + 1, Char_Move_Up_Down);
+                        Console.Write("-");
+                        System.Threading.Thread.Sleep(30);
+                        Console.SetCursorPosition(Char_Move_Left_Right, Char_Move_Up_Down-1);
+                        Console.Write("|");
+                        System.Threading.Thread.Sleep(30);
+                        Console.SetCursorPosition(Char_Move_Left_Right -1, Char_Move_Up_Down);
+                        Console.Write("--");
+                        break;
+                }
+
+                for(int a = 0; a <= 19; a++)
+                {
+                    for (int b = 0; b <= 9; b++)
+                    {
+                        Inventory[a,b] = "asd";
+                    }
+                }
+
+                //command options default:
+                Current_Command = Console.ReadLine().ToUpper();
+                if(Current_Command == "INVENTORY" || Current_Command == "INV")
+                {
+                    for(int a = 0; a <= 19; a++)
+                    {
+                        for(int b = 0; b <= 9; b++)
+                        {
+                            if(b <= 9)
+                            {
+                                Console.SetCursorPosition(5, 5 + a);
+                                Console.Write("{0}", Inventory[b, a]);
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
+                }
+>>>>>>> master
 
                                 }
                             }
