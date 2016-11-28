@@ -19,26 +19,21 @@ namespace ConsoleApplication
             int Char_Move_Left_Right = 10;
             int Char_Move_Up_Down = 10;
             int Game_Over = 0;
-<<<<<<< HEAD
+
             int Resting_Time;
-=======
->>>>>>> master
+
 
             //string:
             string Char_Name = "Class inc.";
             string Current_Command;
-<<<<<<< HEAD
+
             string Char_Status = "";
 
 
             //array:
             string[,] Inventory = new string[10,20];
-=======
 
 
-            //array:
-            string[,] Inventory = new string[10,14];
->>>>>>> master
 
             do 
             {
@@ -49,13 +44,12 @@ namespace ConsoleApplication
                     Char_Level_Current++;
                     Char_EXP_Full = Char_EXP_Full * 1.20;
                 }
-<<<<<<< HEAD
+
                 if(Char_HP_Current > Char_HP_Full)
                 {
                     Char_HP_Current = Char_HP_Full;
                 }
-=======
->>>>>>> master
+
 
             //draw GUI:
             //draw stats:
@@ -172,11 +166,11 @@ namespace ConsoleApplication
                     Console.Clear();
                      //draw stats:
                 Console.SetCursorPosition(0, 0);
-<<<<<<< HEAD
+
             Console.WriteLine(" ________________");
-=======
+
             Console.WriteLine("");
->>>>>>> master
+
             Console.SetCursorPosition(7, 1);
             Console.WriteLine("Name: {0}", Char_Name);
             Console.SetCursorPosition(37, 1);
@@ -201,7 +195,7 @@ namespace ConsoleApplication
                 Console.WriteLine("________________");
                 Console.SetCursorPosition(0,28);
 
-<<<<<<< HEAD
+
                     for (int a = 0; a <= 19; a++)
                     {
                         for (int b = 0; b <= 9; b++)
@@ -212,7 +206,7 @@ namespace ConsoleApplication
                                 Console.Write("{0}", Inventory[b, a]);
                             }
                             else { }
-=======
+
             //player controls
             ConsoleKeyInfo KeyInfo;
             KeyInfo = Console.ReadKey(true);
@@ -313,7 +307,7 @@ namespace ConsoleApplication
                         }
                     }
                 }
->>>>>>> master
+
 
                                 }
                             }
