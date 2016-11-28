@@ -45,15 +45,19 @@ namespace ConsoleApplication
                 }
             //Character Creation:
             Console.Clear();
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 2, Console.WindowHeight / 2 - 3);
             Console.Write("What is your name? ");
             Char_Name = Console.ReadLine();
             Console.Clear();
             Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
             Console.Write("Choose a Class: ");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 1);
             Console.WriteLine("Outlaw");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2);
             Console.WriteLine("Caster");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 1);
             Console.WriteLine("Guardian");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 2);
             Console.Write("");
 
             //draw GUI:
