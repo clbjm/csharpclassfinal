@@ -270,54 +270,59 @@ namespace ConsoleApplication
                             }
                             else { }
 
-                                }
-                            }
+                        }
+                    }
                             
-                        Console.SetCursorPosition(2, 27);
-                        Console.Write("< Back");
-                        Console.SetCursorPosition(0, 29);
-                        Current_Command = Console.ReadLine().ToUpper();
-                        if (Current_Command == "BACK" || Current_Command == "<")
-                        {
-                            Console.Clear();
-                        }
-                        else { }
-                        }if(Current_Command == "SLEEP" || Current_Command == "NAP" || Current_Command == "REST")
-                        {
-                            Console.Clear();
-                            Console.SetCursorPosition(Console.WindowWidth / 2-5, Console.WindowHeight / 2-3);
-                            Console.Write("For how long?");
-                            Resting_Time = Convert.ToInt32(Console.ReadLine());
-                            Console.Clear();
-                            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
-                            Console.Write("Resting:");
-                            Resting_Time = (Resting_Time * 3) * 1000;
-                            System.Threading.Thread.Sleep(Resting_Time);
-                            Console.Clear();
+                Console.SetCursorPosition(2, 27);
+                Console.Write("< Back");
+                Console.SetCursorPosition(0, 29);
+                Current_Command = Console.ReadLine().ToUpper();
+                if (Current_Command == "BACK" || Current_Command == "<")
+                {
+                       Console.Clear();
+                }
+               else { }
+               }if(Current_Command == "SLEEP" || Current_Command == "NAP" || Current_Command == "REST")
+               {
+                    Console.Clear();
+                    Console.SetCursorPosition(Console.WindowWidth / 2-5, Console.WindowHeight / 2-3);
+                    Console.Write("For how long?");
+                    Resting_Time = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                    Console.Write("Resting:");
+                    Resting_Time = (Resting_Time * 3) * 1000;
+                    System.Threading.Thread.Sleep(Resting_Time);
+                    Console.Clear();
 
-                            Char_HP_Current = Char_HP_Current + ((Resting_Time / 1000)/3)*15;
-                        }if(Current_Command == "STATUS" || Current_Command == "HOW AM I DOING")
-                        {
-                            if(Char_Class =="CLAUS")
-                            {
-                                Char_Status = "Claus!..";
-                            }
-                            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
-                            Console.Write("{0}",Char_Status);
-                            Console.SetCursorPosition(2, 27);
-                            Console.Write("< Back");
-                            Console.SetCursorPosition(0, 29);
-                            Current_Command = Console.ReadLine().ToUpper();
-                            if (Current_Command == "BACK" || Current_Command == "<")
-                            {
-                                Console.Clear();
-                            }
-                            else { }
-                        }
-
-
+                    Char_HP_Current = Char_HP_Current + ((Resting_Time / 1000)/3)*15;
+                    }if(Current_Command == "STATUS" || Current_Command == "HOW AM I DOING")
+                    {
+                        if(Char_Class =="CLAUS")
+                         {
+                             Char_Status = "Claus!..";
+                         }
+                         Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                         Console.Write("{0}",Char_Status);
+                         Console.SetCursorPosition(2, 27);
+                         Console.Write("< Back");
+                         Console.SetCursorPosition(0, 29);
+                         Current_Command = Console.ReadLine().ToUpper();
+                         if (Current_Command == "BACK" || Current_Command == "<")
+                         {
+                             Console.Clear();
+                         }
+                         else { }
+                     }
 
 
+
+                        //Intro Mission:
+                        Console.SetCursorPosition(3,5);
+                        Console.WriteLine("You awaken in a darkened dungon cellar. Feeling around, you do not notice any particular items on your person");
+
+
+                        
 
                 } while(Game_Over == 0);
 
