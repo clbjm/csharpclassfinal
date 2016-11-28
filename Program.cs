@@ -119,9 +119,9 @@ namespace ConsoleApplication
             //draw GUI:
             //draw stats:
             Console.Clear();
-            Console.SetCursorPosition(0, 0);
+            /*Console.SetCursorPosition(0, 0);
             Console.WriteLine(" ________________");
-            Console.SetCursorPosition(7, 1);
+            */Console.SetCursorPosition(7, 1);
             Console.WriteLine("Name: {0}", Char_Name);
             Console.SetCursorPosition(37, 1);
             Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
@@ -129,12 +129,12 @@ namespace ConsoleApplication
             Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
             Console.SetCursorPosition(97,1);
             Console.WriteLine("Level: {0}", Char_Level_Current);
-            Console.WriteLine("_____________________");
+            /*Console.WriteLine("_____________________");
             Console.SetCursorPosition(0, 1);
             Console.WriteLine("/");
             Console.SetCursorPosition(118, 1);
             Console.WriteLine("/");
-            //draw game screen:
+           *//*draw game screen:
             for(int a = 3; a <= 27; a++)
             {
                 Console.SetCursorPosition(0, a);
@@ -144,6 +144,9 @@ namespace ConsoleApplication
             }
             Console.SetCursorPosition(0,28);
             Console.WriteLine("________________");
+            */
+
+
 
             /*
             //player controls
@@ -232,9 +235,9 @@ namespace ConsoleApplication
                 {
                     Console.Clear();
                      //draw stats:
-                Console.SetCursorPosition(0, 0);
+               /*Console.SetCursorPosition(0, 0);
                 Console.WriteLine(" ________________");
-                Console.SetCursorPosition(7, 1);
+                */Console.SetCursorPosition(7, 1);
                 Console.WriteLine("Name: {0}", Char_Name);
                 Console.SetCursorPosition(37, 1);
                 Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
@@ -242,12 +245,12 @@ namespace ConsoleApplication
                 Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
                 Console.SetCursorPosition(97,1);
                 Console.WriteLine("Level: {0}", Char_Level_Current);
-                Console.WriteLine("_____________________");
+                /*Console.WriteLine("_____________________");
                 Console.SetCursorPosition(0, 1);
                 Console.WriteLine("/");
                 Console.SetCursorPosition(118, 1);
-                Console.WriteLine("/");
-                //draw game screen:
+                Console.WriteLine("/");*/
+                /*draw game screen:
                 for(int a = 3; a <= 27; a++)
                 {
                     Console.SetCursorPosition(0, a);
@@ -257,7 +260,7 @@ namespace ConsoleApplication
                 }
                 Console.SetCursorPosition(0,28);
                 Console.WriteLine("________________");
-
+                */
 
                     for (int a = 0; a <= 19; a++)
                     {
@@ -302,6 +305,19 @@ namespace ConsoleApplication
                          {
                              Char_Status = "Claus!..";
                          }
+                         if(Char_HP_Current < Char_EXP_Full*0.60)
+                         {
+                             Char_Status = "You have felt better..";
+                         }
+                         if(Char_HP_Current < Char_EXP_Full*0.50)
+                         {
+                             Char_Status = "You feel pretty bad, but able to go on..";
+                         }
+                          if(Char_HP_Current < Char_EXP_Full*0.10)
+                         {
+                             Char_Status = "You are bleeding from the torso, and your battle scars are massive.";
+                         }
+                         Console.Clear();
                          Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
                          Console.Write("{0}",Char_Status);
                          Console.SetCursorPosition(2, 27);
