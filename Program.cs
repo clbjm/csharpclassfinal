@@ -62,6 +62,7 @@ namespace ConsoleApplication
             Console.WriteLine("Guardian");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 2);
             Console.Write("Paladin");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 3);
             Char_Class = Console.ReadLine().ToUpper();
             if(Char_Class != "OUTLAW" || Char_Class != "CASTER" || Char_Class != "GUARDIAN" || Char_Class != "PALADIN" || Char_Class != "CLAUS")
             {
@@ -75,6 +76,7 @@ namespace ConsoleApplication
 
             //draw GUI:
             //draw stats:
+            Console.Clear();
             Console.SetCursorPosition(0, 0);
             Console.WriteLine(" ________________");
             Console.SetCursorPosition(7, 1);
