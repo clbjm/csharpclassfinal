@@ -32,6 +32,36 @@ namespace ConsoleApplication
             //array:
             string[,] Inventory = new string[10,20];
 
+
+            
+            //Character Creation:
+            Console.Clear();
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 2, Console.WindowHeight / 2 - 3);
+            Console.Write("What is your name? ");
+            Char_Name = Console.ReadLine();
+            do {
+                    Console.Clear();
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                    Console.Write("Choose a Class: ");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 1);
+                    Console.Write("Outlaw");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2);
+                    Console.Write("Caster");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 1);
+                    Console.Write("Guardian");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 2);
+                    Console.Write("Paladin");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 3);
+                    Char_Class = Console.ReadLine().ToUpper();
+                    if(Char_Class != "OUTLAW" || Char_Class != "CASTER" || Char_Class != "GUARDIAN" || Char_Class != "PALADIN" || Char_Class != "CLAUS")
+                    {
+                        Error = 0;
+                    }
+                    else
+                    {
+                        Error = 1;
+                    }
+                } while (Error == 1);
             do 
             {
                 //count EXP:
@@ -45,34 +75,7 @@ namespace ConsoleApplication
                 {
                     Char_HP_Current = Char_HP_Full;
                 }
-            //Character Creation:
-            Console.Clear();
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 2, Console.WindowHeight / 2 - 3);
-            Console.Write("What is your name? ");
-            Char_Name = Console.ReadLine();
-            do {
-            Console.Clear();
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
-            Console.Write("Choose a Class: ");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 1);
-            Console.WriteLine("Outlaw");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2);
-            Console.WriteLine("Caster");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 1);
-            Console.WriteLine("Guardian");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 2);
-            Console.Write("Paladin");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 3);
-            Char_Class = Console.ReadLine().ToUpper();
-            if(Char_Class != "OUTLAW" || Char_Class != "CASTER" || Char_Class != "GUARDIAN" || Char_Class != "PALADIN" || Char_Class != "CLAUS")
-            {
-                Error = 0;
-            }
-            else
-            {
-                Error = 1;
-            }
-            } while (Error == 1);
+            
 
             //draw GUI:
             //draw stats:
@@ -85,7 +88,7 @@ namespace ConsoleApplication
             Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
             Console.SetCursorPosition(67,1);
             Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
-            Console.SetCursorPosition(97,1);
+            Console.SetCursorPosition(77,1);
             Console.WriteLine("Level: {0}", Char_Level_Current);
             Console.WriteLine("_____________________");
             Console.SetCursorPosition(0, 1);
@@ -96,15 +99,16 @@ namespace ConsoleApplication
             for(int a = 3; a <= 27; a++)
             {
                 Console.SetCursorPosition(0, a);
-                Console.WriteLine("|");
+                Console.Write("|");
                 Console.SetCursorPosition(119, a);
                 Console.Write("|");
             }
             Console.SetCursorPosition(0,28);
             Console.WriteLine("________________");
 
+            /*
             //player controls
-           /* ConsoleKeyInfo KeyInfo;
+            ConsoleKeyInfo KeyInfo;
             KeyInfo = Console.ReadKey(true);
             switch (KeyInfo.Key)
             {
@@ -190,30 +194,31 @@ namespace ConsoleApplication
                     Console.Clear();
                      //draw stats:
                 Console.SetCursorPosition(0, 0);
-            Console.WriteLine(" ________________");
-            Console.SetCursorPosition(7, 1);
-            Console.WriteLine("Name: {0}", Char_Name);
-            Console.SetCursorPosition(37, 1);
-            Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
-            Console.SetCursorPosition(67,1);
-            Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
-            Console.SetCursorPosition(97,1);
-            Console.WriteLine("Level: {0}", Char_Level_Current);
-            Console.WriteLine("_____________________");
-            Console.SetCursorPosition(0, 1);
-            Console.WriteLine("/");
-            Console.SetCursorPosition(118, 1);
-            Console.WriteLine("/");
+                Console.WriteLine(" ________________");
+                Console.SetCursorPosition(7, 1);
+                Console.WriteLine("Name: {0}", Char_Name);
+                Console.SetCursorPosition(37, 1);
+                Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
+                Console.SetCursorPosition(67,1);
+                Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
+                Console.SetCursorPosition(97,1);
+                Console.WriteLine("Level: {0}", Char_Level_Current);
+                Console.WriteLine("_____________________");
+                Console.SetCursorPosition(0, 1);
+                Console.WriteLine("/");
+                Console.SetCursorPosition(118, 1);
+                Console.WriteLine("/");
                 //draw game screen:
                 for(int a = 3; a <= 27; a++)
                 {
                     Console.SetCursorPosition(0, a);
-                    Console.WriteLine("|");
+                    Console.Write("|");
                     Console.SetCursorPosition(119, a);
                     Console.Write("|");
                 }
-                Console.WriteLine("________________");
                 Console.SetCursorPosition(0,28);
+                Console.WriteLine("________________");
+
 
                     for (int a = 0; a <= 19; a++)
                     {
@@ -238,37 +243,47 @@ namespace ConsoleApplication
                             Console.Clear();
                         }
                         else { }
-            }if(Current_Command == "SLEEP" || Current_Command == "NAP" || Current_Command == "REST")
-            {
-                Console.Clear();
-                Console.SetCursorPosition(Console.WindowWidth / 2-5, Console.WindowHeight / 2-3);
-                Console.Write("For how long?");
-                Resting_Time= Convert.ToInt32(Console.ReadLine());
-                Console.Clear();
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
-                Console.Write("Resting");
-                Resting_Time = (Resting_Time * 3) * 1000;
-                System.Threading.Thread.Sleep(Resting_Time);
-                Console.Clear();
+                        }if(Current_Command == "SLEEP" || Current_Command == "NAP" || Current_Command == "REST")
+                        {
+                            Console.Clear();
+                            Console.SetCursorPosition(Console.WindowWidth / 2-5, Console.WindowHeight / 2-3);
+                            Console.Write("For how long?");
+                            Resting_Time = Convert.ToInt32(Console.ReadLine());
+                            Console.Clear();
+                            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                            Console.Write("Resting:");
+                            Resting_Time = (Resting_Time * 3) * 1000;
+                            System.Threading.Thread.Sleep(Resting_Time);
+                            Console.Clear();
 
-               Char_HP_Current = Char_HP_Current + ((Resting_Time / 1000)/3)*15;
-            }if(Current_Command == "STATUS" || Current_Command == "HOW AM I DOING" || Current_Command == "")
-            {
-                Console.SetCursorPosition(2, 27);
-                Console.Write("< Back");
-                Console.SetCursorPosition(0, 29);
-                Current_Command = Console.ReadLine().ToUpper();
-                if (Current_Command == "BACK" || Current_Command == "<")
-                {
-                    Console.Clear();
-                }
-                else { }
-            }
+                            Char_HP_Current = Char_HP_Current + ((Resting_Time / 1000)/3)*15;
+                        }if(Current_Command == "STATUS" || Current_Command == "HOW AM I DOING")
+                        {
+                            if(Char_Class =="CLAUS")
+                            {
+                                Char_Status = "Claus!..";
+                            }
+                            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                            Console.Write("{0}",Char_Status);
+                            Console.SetCursorPosition(2, 27);
+                            Console.Write("< Back");
+                            Console.SetCursorPosition(0, 29);
+                            Current_Command = Console.ReadLine().ToUpper();
+                            if (Current_Command == "BACK" || Current_Command == "<")
+                            {
+                                Console.Clear();
+                            }
+                            else { }
+                        }
 
-            } while(Game_Over == 0);
+
+
+
+
+                } while(Game_Over == 0);
 
 
             Console.ReadLine();
-    }
+        }
     }
 }
