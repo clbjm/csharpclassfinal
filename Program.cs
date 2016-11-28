@@ -22,6 +22,12 @@ namespace ConsoleApplication
             int Resting_Time;
             int Error = 0;
 
+            int Attack_Bonus = 0;
+            int Speech_Bonus = 0;
+            int Sneak_Bonus = 0;
+            int Armour_Bouns = 0;
+            int Casting_Bouns = 0;
+
             //string:
             string Char_Name = "";
             string Current_Command;
@@ -56,6 +62,42 @@ namespace ConsoleApplication
                     if(Char_Class != "OUTLAW" || Char_Class != "CASTER" || Char_Class != "GUARDIAN" || Char_Class != "PALADIN" || Char_Class != "CLAUS")
                     {
                         Error = 0;
+                        if(Char_Class == "OUTLAW")
+                        {
+                            Attack_Bonus =+ 4;
+                            Speech_Bonus =+ 7;
+                            Sneak_Bonus =+ 10;
+                            Armour_Bouns =+ 3;
+                            Casting_Bouns =+ 1;
+                        }if(Char_Class == "Caster")
+                        {
+                            Attack_Bonus =+ 5;
+                            Speech_Bonus =+ 5;
+                            Sneak_Bonus =+ 3;
+                            Armour_Bouns =+ 2;
+                            Casting_Bouns =+ 10;
+                        }if(Char_Class == "Guardian")
+                        {
+                            Attack_Bonus =+ 9;
+                            Speech_Bonus =+ 3;
+                            Sneak_Bonus =+ 2;
+                            Armour_Bouns =+ 10;
+                            Casting_Bouns =+ 1;
+                        }if(Char_Class == "Paladin")
+                        {
+                            Attack_Bonus =+ 6;
+                            Speech_Bonus =+ 6;
+                            Sneak_Bonus =+ 2;
+                            Armour_Bouns =+ 5;
+                            Casting_Bouns =+ 6;
+                        }if(Char_Class == "Claus")
+                        {
+                            Attack_Bonus =+ 5;
+                            Speech_Bonus =+ 10;
+                            Sneak_Bonus =+ 2;
+                            Armour_Bouns =+ 7;
+                            Casting_Bouns =+ 1;
+                        }
                     }
                     else
                     {
@@ -88,7 +130,7 @@ namespace ConsoleApplication
             Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
             Console.SetCursorPosition(67,1);
             Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
-            Console.SetCursorPosition(77,1);
+            Console.SetCursorPosition(97,1);
             Console.WriteLine("Level: {0}", Char_Level_Current);
             Console.WriteLine("_____________________");
             Console.SetCursorPosition(0, 1);
