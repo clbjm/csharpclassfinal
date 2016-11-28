@@ -20,11 +20,13 @@ namespace ConsoleApplication
             int Char_Move_Up_Down = 10;
             int Game_Over = 0;
             int Resting_Time;
+            int Error = 0;
 
             //string:
             string Char_Name = "";
             string Current_Command;
             string Char_Status = "";
+            string Char_Class;
 
 
             //array:
@@ -48,6 +50,7 @@ namespace ConsoleApplication
             Console.SetCursorPosition(Console.WindowWidth / 2 - 2, Console.WindowHeight / 2 - 3);
             Console.Write("What is your name? ");
             Char_Name = Console.ReadLine();
+            do {
             Console.Clear();
             Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
             Console.Write("Choose a Class: ");
@@ -58,7 +61,17 @@ namespace ConsoleApplication
             Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 1);
             Console.WriteLine("Guardian");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 + 2);
-            Console.Write("");
+            Console.Write("Paladin");
+            Char_Class = Console.ReadLine().ToUpper();
+            if(Char_Class != "OUTLAW" || Char_Class != "CASTER" || Char_Class != "GUARDIAN" || Char_Class != "PALADIN" || Char_Class != "CLAUS")
+            {
+                Error = 0;
+            }
+            else
+            {
+                Error = 1;
+            }
+            } while (Error == 1);
 
             //draw GUI:
             //draw stats:
