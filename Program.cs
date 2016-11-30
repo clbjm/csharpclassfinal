@@ -229,7 +229,32 @@ namespace ConsoleApplication
                     }
                 }
 
+
+
+
+
+
+
+                //Intro Mission:
+                Console.SetCursorPosition(3, 5);
+                Console.WriteLine("You awaken in a darkened dungon cellar. Feeling around, you do not notice any particular items on your person.");
+                Console.WriteLine("Your fists bloody from the fight you put up, and your ribs broken and bruised, from when they took you down.");
+                Console.WriteLine("It appears they did not enjoy the rebelion as much as you did, and you are sure to end up paying the price.");
+                Console.WriteLine("The need to find your way out inceases when you hear the footsteps in the distance, might be the rescue, or maybe a prison warden");
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                Console.WriteLine("WAIT (Hope for a savior)");
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                Console.WriteLine("RUN (Escape potential warden)");
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                Current_Command = Console.ReadLine().ToUpper();
+
+
+
+
+
+
                 //command options default:
+                Console.SetCursorPosition(0, 29);
                 Current_Command = Console.ReadLine().ToUpper();
                 if (Current_Command == "INVENTORY" || Current_Command == "INV")
                 {
