@@ -19,8 +19,8 @@ namespace ConsoleApplication
             int Resting_Time;
             int Error = 0;
 
-            int Attack_Bonus = 0;
-            int Speech_Bonus = 0;
+            int Attack_Bonus = 1;
+            int Speech_Bonus = 1;
             int Sneak_Bonus = 0;
             int Armour_Bouns = 0;
             int Casting_Bouns = 0;
@@ -46,6 +46,7 @@ namespace ConsoleApplication
             Random Diceroll = new Random();
             //array:
             string[,] Inventory = new string[10,20];
+            string[,] Spellbook = new string[10, 20];
 
 
             
@@ -78,6 +79,12 @@ namespace ConsoleApplication
                             Sneak_Bonus =+ 10;
                             Armour_Bouns =+ 3;
                             Casting_Bouns =+ 1;
+                            Spellbook[0, 0] = "Flame";
+                            Spellbook[1, 0] = "5";
+                            Spellbook[1, 0] = "DAMAGE";
+                            Spellbook[0, 0] = "Thunderbolt";
+                            Spellbook[1, 1] = "7";
+                            Spellbook[1, 0] = "DAMAGE";
                         }if(Char_Class == "Caster")
                         {
                             Attack_Bonus =+ 5;
@@ -99,6 +106,9 @@ namespace ConsoleApplication
                             Sneak_Bonus =+ 2;
                             Armour_Bouns =+ 5;
                             Casting_Bouns =+ 6;
+                            Spellbook[0, 0] = "Lesser Healing";
+                            Spellbook[1, 0] = "10";
+                            Spellbook[1, 0] = "DAMAGE";
                         }if(Char_Class == "Claus")
                         {
                             Attack_Bonus =+ 5;
@@ -327,13 +337,21 @@ namespace ConsoleApplication
                             //combat:
                             do
                             {
-                            Console.WriteLine("Name: {0}", Char_Name);
+                            Console.SetCursorPosition(7, 1);
+                            Console.WriteLine("Player Name: {0}", Char_Name);
                             Console.SetCursorPosition(37, 1);
                             Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
                             Console.SetCursorPosition(67,1);
                             Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
                             Console.SetCursorPosition(97,1);
                             Console.WriteLine("Level: {0}", Char_Level_Current);
+
+                            Console.SetCursorPosition(7, 3);
+                            Console.WriteLine("Enemy Name: {0}", foe_name);
+                            Console.SetCursorPosition(37, 3);
+                            Console.WriteLine("HP: {0}/{1}", foe_hp_current, foe_hp_full);
+
+                            Console.SetCursorPosition(67,1);
                             Console.SetCursorPosition(10, 10);
                             Console.Write("[1] To Attack");
                             Console.SetCursorPosition(40, 10);
@@ -345,7 +363,18 @@ namespace ConsoleApplication
                             Current_Command = Console.ReadLine();
                             if(Current_Command == "1")
                             {
-                                Dicerolled = Diceroll.Next(1,char_attack + Attack_Bonus);
+                                Dicerolled = Diceroll.Next(0, char_attack + Attack_Bonus+1);
+                                if(Dicerolled >= 1)
+                                {
+                                    Console.SetCursorPosition(3, 15);
+                                    Console.WriteLine("You hit the {0} and delt {1} damage.", foe_name, Dicerolled);
+                                    foe_hp_current = foe_hp_current - Dicerolled;
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(3, 15);
+                                    Console.WriteLine("You missed");
+                                }
                             }
                             if(Current_Command == "2")
                             {
@@ -361,7 +390,7 @@ namespace ConsoleApplication
                             }
 
 
-                            } while (foe_hp_current > 0 || Char_HP_Current <= 0);
+                            } while (foe_hp_current > 0 || Char_HP_Current >= 0);
                         }
                     }
                     if(Dicerolled == 2)
