@@ -31,7 +31,8 @@ namespace ConsoleApplication
             string Char_Status = "";
             string Char_Class;
 
-
+            //Random
+            Random Diceroll = new Random();
             //array:
             string[,] Inventory = new string[10,20];
 
@@ -247,6 +248,41 @@ namespace ConsoleApplication
                 Console.WriteLine("RUN (Escape potential warden)");
                 Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
                 Current_Command = Console.ReadLine().ToUpper();
+                if(Current_Command == "RUN")
+                {
+
+                }if(Current_Command == "Wait")
+                {
+                    int Dicerolled = Diceroll.Next(1, 3);
+                    if(Dicerolled == 1)
+                    {
+                        Console.Clear();
+                        Console.SetCursorPosition(3, 5);
+                        Console.WriteLine("The footsteps have come to a full stop, and a almost inaudible sound is mand from the right corner of the room");
+                        Console.WriteLine("Psssst!");
+                        Console.WriteLine("You pick up a the lit candle on a barrel next to you, and hold it forward to try lighting up this dark dungeon. But as if the light was swallowed by the darknes, it goes nowhere.");
+                        Console.WriteLine("The voice is again heard.");
+                        Console.WriteLine("I see you in there..!");
+                         Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                        Console.WriteLine("WAIT (Hope for the best)");
+                        Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                        Console.WriteLine("RUN (Escape potential danger)");
+                        Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                        Current_Command = Console.ReadLine().ToUpper();
+                        if(Current_Command == "Wait")
+                        {
+                            Console.Clear();
+                            Console.SetCursorPosition(3, 5);
+                            Console.WriteLine("The footsteps come towards you, and as if no time has passed, a shadow figure is against the bars of your cellar");
+                            Console.WriteLine("You hold the candle in towards the shadow of a person, and a female face is seen");
+                            Console.WriteLine("Female: do not make a noice, I am here to help you escape. But I think I was followed down here.");
+                        }
+
+                    }if(Dicerolled == 2)
+                    {
+                        
+                    }
+                }
 
 
 
