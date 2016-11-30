@@ -25,11 +25,22 @@ namespace ConsoleApplication
             int Armour_Bouns = 0;
             int Casting_Bouns = 0;
 
+
+            int Teammates = 1;
+
+            int foe_hp_current;
+            int foe_hp_full;
+            int foe_attack;
+            int char_attack = 1;
+
             //string:
             string Char_Name = "";
             string Current_Command;
             string Char_Status = "";
             string Char_Class;
+
+            string foe_name;
+            string char_weapon = "fists";
 
             //Random
             Random Diceroll = new Random();
@@ -114,6 +125,10 @@ namespace ConsoleApplication
                 if(Char_HP_Current > Char_HP_Full)
                 {
                     Char_HP_Current = Char_HP_Full;
+                }
+                if(Char_HP_Current <= 0)
+                {
+                    Game_Over = 1;
                 }
             
 
@@ -259,29 +274,103 @@ namespace ConsoleApplication
                         Console.Clear();
                         Console.SetCursorPosition(3, 5);
                         Console.WriteLine("The footsteps have come to a full stop, and a almost inaudible sound is mand from the right corner of the room");
+                        Console.SetCursorPosition(3, 6);
                         Console.WriteLine("Psssst!");
+                        Console.SetCursorPosition(3, 7);
                         Console.WriteLine("You pick up a the lit candle on a barrel next to you, and hold it forward to try lighting up this dark dungeon. But as if the light was swallowed by the darknes, it goes nowhere.");
+                        Console.SetCursorPosition(3, 8);
                         Console.WriteLine("The voice is again heard.");
+                        Console.SetCursorPosition(3, 9);
                         Console.WriteLine("I see you in there..!");
-                         Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 3);
+                         Console.SetCursorPosition(Console.WindowWidth / 2 - 10, Console.WindowHeight / 2 - 3);
                         Console.WriteLine("WAIT (Hope for the best)");
-                        Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                        Console.SetCursorPosition(Console.WindowWidth / 2 - 10, Console.WindowHeight / 2 - 2);
                         Console.WriteLine("RUN (Escape potential danger)");
-                        Console.SetCursorPosition(Console.WindowWidth / 2 - 5, Console.WindowHeight / 2 - 2);
+                        Console.SetCursorPosition(Console.WindowWidth / 2 - 10, Console.WindowHeight / 2 - 2);
                         Current_Command = Console.ReadLine().ToUpper();
                         if(Current_Command == "Wait")
                         {
                             Console.Clear();
+                            Teammates++;
                             Console.SetCursorPosition(3, 5);
                             Console.WriteLine("The footsteps come towards you, and as if no time has passed, a shadow figure is against the bars of your cellar");
+                            Console.SetCursorPosition(3, 6);
                             Console.WriteLine("You hold the candle in towards the shadow of a person, and a female face is seen");
+                            Console.SetCursorPosition(3, 7);
                             Console.WriteLine("Female: do not make a noice, I am here to help you escape. But I think I was followed down here.");
-                        }
+                            Console.SetCursorPosition(3, 8);
+                            Console.WriteLine("Pulling out a homemade mechinical device, the woman pulls a trigger and the lock on your cellar door comes right off.");
+                            Console.SetCursorPosition(3, 9);
+                            Console.WriteLine("Female: Follow me now, or I will leave you");
+                            Console.SetCursorPosition(3, 10);
+                            Console.WriteLine("You follow along, and the both of you start running, although the darkness seemed to swallow your light, outside the cellar it is as bright as day.");
+                            Console.SetCursorPosition(3, 11);
+                            Console.WriteLine("Barging through a wooden plank door, the two of you fall to the floor and breath out, sure that something was following you, looking back yield no results.");
+                            Console.SetCursorPosition(3, 12);
+                            Console.WriteLine("Looking ahead, a shadow figure is standing right in front of you, and stares into the very soul of you both.");
+                            Console.SetCursorPosition(3, 13);
+                            Console.WriteLine("A scream is heard inside your head, and you feel as if your brain is about to explode out of your eyes.");
+                            
+                            
+                            Console.SetCursorPosition(2, 27);
+                            Console.Write("[Enter] To enter Combat");
+                            Console.Read();
+                            Console.Clear();
 
-                    }if(Dicerolled == 2)
+                            //Foe:
+                            foe_name = "Shadow";
+                            foe_hp_full = 40;
+                            foe_hp_current = 40;
+                            foe_attack = 5;
+                            Current_Command = "COMBAT";
+
+                            //combat:
+                            do
+                            {
+                            Console.WriteLine("Name: {0}", Char_Name);
+                            Console.SetCursorPosition(37, 1);
+                            Console.WriteLine("HP: {0}/{1}", Char_HP_Current, Char_HP_Full);
+                            Console.SetCursorPosition(67,1);
+                            Console.WriteLine("EXP: {0}/{1}", Char_EXP_Current, Char_EXP_Full);
+                            Console.SetCursorPosition(97,1);
+                            Console.WriteLine("Level: {0}", Char_Level_Current);
+                            Console.SetCursorPosition(10, 10);
+                            Console.Write("[1] To Attack");
+                            Console.SetCursorPosition(40, 10);
+                            Console.Write("[2] To Cast Magick");
+                            Console.SetCursorPosition(10, 11);
+                            Console.Write("[3] To Consume HP Potion");
+                            Console.SetCursorPosition(40, 11);
+                            Console.Write("[4] To Attempt Fleeing");
+                            Current_Command = Console.ReadLine();
+                            if(Current_Command == "1")
+                            {
+                                Dicerolled = Diceroll.Next(1,char_attack + Attack_Bonus);
+                            }
+                            if(Current_Command == "2")
+                            {
+                                Dicerolled = Diceroll.Next(1, 3);
+                            }
+                            if(Current_Command == "3")
+                            {
+                                Dicerolled = Diceroll.Next(1, 3);
+                            }
+                            if(Current_Command == "4")
+                            {
+                                Dicerolled = Diceroll.Next(1, 3);
+                            }
+
+
+                            } while (foe_hp_current > 0 || Char_HP_Current <= 0);
+                        }
+                    }
+                    if(Dicerolled == 2)
                     {
                         
                     }
+                }if(Current_Command == "RUN")
+                {
+
                 }
 
 
