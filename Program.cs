@@ -379,6 +379,11 @@ namespace ConsoleApplication
                             if(Current_Command == "2")
                             {
                                 Dicerolled = Diceroll.Next(1, 3);
+                                Console.WriteLine("Choose a spell from your Spellbook");
+                                for(int y = 0; y<= 100; y++;)
+                                {
+                                    for(int x = 0;)
+                                }
                             }
                             if(Current_Command == "3")
                             {
