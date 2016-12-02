@@ -321,7 +321,9 @@ namespace Text_based_adventure_game
 
 
 
-
+            //Enemy Declair System:
+            Enemy_Name "Rat";
+            Enemy_Health_Points = 12;
 
 
 
@@ -345,6 +347,13 @@ namespace Text_based_adventure_game
                     Console.WriteLine("You did {0} Damage to the {1}", Random_Damage_Roll, Enemy_Name);
                     Random Skill_Point_Roll = new Random();
                     int Skill_Point_Outcome = random.Next(0,11);
+                    if(Skill_Point_Outcome > 6)
+                    {
+                        Random_Damage_Roll = Random_Damage_Roll + Player_One_Handed;
+                        Console.WriteLine("You did a critical hit, and added {0} Skill points of damage",Player_One_Handed);
+                        Console.WriteLine("{0}",Player_One_Handed);
+                    }
+                    else{}
                 }
                 if(Player_Attack_Type == 2)
                 {
@@ -359,13 +368,14 @@ namespace Text_based_adventure_game
                     
                 }
                 else{}
+                Console.ReadLine();
             } while(correct == 0);
 
 
 
 
 
-            //Enemy Declair System:
+
 
 
 
