@@ -21,6 +21,9 @@ namespace Text_based_adventure_game
             int Player_Health_Points = 20;
             int Player_Mana_Points = 12;
             int Enemy_Health_Points;
+            int Enemy_Maximum_Damage;
+            int Player_Inventory_Money = 0;
+            int Player_Inventory_Experience = 0;
 
 
 
@@ -31,6 +34,7 @@ namespace Text_based_adventure_game
             string[] Inventory = new string[20];
             string Input;
             string Enemy_Name;
+            string Player_Quest = " ";
 
             //Caracter Creation:
             do {
@@ -442,13 +446,38 @@ namespace Text_based_adventure_game
                     Console.WriteLine("... You won the battle");
                     Console.ReadLine();
                 }
-                Console.ReadLine();
-            } while(correct == 0);
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+                //Quest giving system:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //Menu Quest Writeout
 
 
 
