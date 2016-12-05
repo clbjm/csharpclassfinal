@@ -590,7 +590,7 @@ namespace Text_based_adventure_game
                         {
                             do{
                             Console.WriteLine("You notice something, you swar it wasn't there before. An old rusty, metal cup. You pick it up, and put it in your inventory");
-                            Inventory{0} = "Old Metal Cup";
+                            Inventory[0] = "Old Metal Cup";
                             Console.WriteLine("< Back");
                             Input = Console.ReadLine().ToUpper();
                             if(Input == "BACK")
@@ -601,7 +601,7 @@ namespace Text_based_adventure_game
                         }
                 }
                 if (Input == "BARS") {
-                    if(Inventory{0} == null){
+                    if(Inventory[0] == null) {
                         do{
                             Console.WriteLine("The bars won't budge, and gave you a wierd feeling upon the touch");
                             Console.WriteLine("< Back");
@@ -611,7 +611,7 @@ namespace Text_based_adventure_game
                             if(Input != "BACK")
                             {correct = 0;}
                         }while(correct == 0);
-                    }if(Inventory{0} != null)
+                    }if(Inventory[0] != null)
                     {
                         do{
                             Console.WriteLine("The liquid in the cup, might just do the trick here, mabe you can melt the bars with the liquid acid");
@@ -681,7 +681,7 @@ namespace Text_based_adventure_game
 					Console.WriteLine ("Enter Inventory, to see your Inventory content");
 					Console.WriteLine ("Enter Status, to see in detail how your character is doing");
 					Console.WriteLine ("< Back");
-					Input = Console.ReadLine ().ToUpper ();
+					Input = Console.ReadLine().ToUpper();
 					if (Input == "QUEST" && Player_Quest != " ") {
 						do {
 							Console.Clear ();
@@ -765,7 +765,7 @@ namespace Text_based_adventure_game
 					correct = 0;
 					Console.WriteLine ("Enter Quest, to see your current quest");
 					Console.WriteLine ("Enter Inventory, to see your Inventory content");
-					Console.WriteLine ("Enter Status, to see in detail how your character is doing");
+					Console.WriteLine ("Enter Status, to see the stats of your character");
 					Console.WriteLine ("< Back");
 					Input = Console.ReadLine ().ToUpper ();
 					if (Input == "QUEST" && Player_Quest != " ") {
