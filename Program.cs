@@ -684,7 +684,7 @@ namespace Text_based_adventure_game
 					Input = Console.ReadLine().ToUpper();
 					if (Input == "QUEST" && Player_Quest != " ") {
 						do {
-							Console.Clear ();
+							Console.Clear();
 							Console.WriteLine (Player_Quest);
 							Console.WriteLine ("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
 							Console.WriteLine ("< Back");
@@ -699,7 +699,7 @@ namespace Text_based_adventure_game
 					if (Input == "QUEST" && Player_Quest == " ") {
 						do {
 							Console.Clear ();
-							Console.WriteLine ("You don not have any active quests at the moment");
+							Console.WriteLine ("You do not have any active quests at the moment");
 							Console.WriteLine ("< back");
 							Input = Console.ReadLine ().ToUpper ();
 							if (Input == "BACK") {
