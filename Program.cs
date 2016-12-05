@@ -24,36 +24,39 @@ namespace Text_based_adventure_game
             int Enemy_Maximum_Damage;
             int Player_Inventory_Money = 0;
             int Player_Inventory_Experience = 0;
-
-
-
+            int Quest_Reward_EXP;
+            int Quest_Reward_Gold;
+            int Player_Quest_Progress = 0;
+            int Player_Quest_Goal;
+            int Player_EXP = 0;
+            int Player_Checked_For_Item = 0;
             //strings:
-            string Gender;
-            string Race;
-            string Class;
+            string Player_Gender;
+            string Player_Race;
+            string Player_Class;
             string[] Inventory = new string[20];
             string Input;
             string Enemy_Name;
             string Player_Quest = " ";
-
+            string Quest_Accepted;
+            string Player_Quest_Enemy;
             //Caracter Creation:
             do {
                 Console.Clear();
                 Console.WriteLine ("Please choose a gender as below:");
                 Console.WriteLine ("Male / Female");
-                Gender = Console.ReadLine ().ToUpper();
-                if (Gender == "MALE")
+                Player_Gender = Console.ReadLine ().ToUpper();
+                if (Player_Gender == "MALE")
                 {
                     correct =1;
                 }
-                if (Gender == "FEMALE") 
+                if (Player_Gender == "FEMALE") 
                 {
                     correct =1;
                 }
                 else {}
             }while(correct == 0);
             correct = 0;
-
 
             //Race Creation:
             do {
@@ -64,8 +67,8 @@ namespace Text_based_adventure_game
                 Console.WriteLine ("Elf");
                 Console.WriteLine ("Orc");
                 Console.WriteLine ("Your Choice:");
-                Race = Console.ReadLine ().ToUpper ();
-                if (Race == "HUMAN")
+                Player_Race = Console.ReadLine ().ToUpper ();
+                if (Player_Race == "HUMAN")
                 {
                     Console.WriteLine("This race has the following bonuses:");
                     Console.WriteLine("One Handed Weapons. 1 Point");
@@ -83,7 +86,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                 }
-                    if (Race == "DWARF")
+                    if (Player_Race == "DWARF")
                     {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 1 Point");
@@ -101,7 +104,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                     }
-                    if (Race == "ELF")
+                    if (Player_Race == "ELF")
                     {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 0 Point");
@@ -119,7 +122,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                     }
-                    if (Race == "ORC")
+                    if (Player_Race == "ORC")
                     {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 2 Point");
@@ -138,17 +141,12 @@ namespace Text_based_adventure_game
                     }
                     
                 }
-                else if (Race != "HUMAN" || Race != "DWARF" || Race != "ELF" || Race != "ORC")
+                else if (Player_Race != "HUMAN" || Player_Race != "DWARF" || Player_Race != "ELF" || Player_Race != "ORC")
                 {
                     correct = 0;
                 } 
             } while(correct == 0);
             correct = 0;
-
-
-
-
-
             //Class Creation:
             do {
                 Console.Clear();
@@ -158,8 +156,8 @@ namespace Text_based_adventure_game
                 Console.WriteLine ("Mage");
                 Console.WriteLine ("Thief");
                 Console.WriteLine ("Your Choice:");
-                Class = Console.ReadLine ().ToUpper ();
-                if (Class == "WARRIOR")
+                Player_Class = Console.ReadLine ().ToUpper ();
+                if (Player_Class == "WARRIOR")
                 {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 2 Point");
@@ -177,7 +175,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                 }
-                    if (Class == "HUNTER")
+                    if (Player_Class == "HUNTER")
                  {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 1 Point");
@@ -195,7 +193,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                  }
-                    if (Class == "MAGE")
+                    if (Player_Class == "MAGE")
                 {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 1 Point");
@@ -213,7 +211,7 @@ namespace Text_based_adventure_game
                         correct = 0;
                     }
                 }
-                    if (Class == "THIEF")
+                    if (Player_Class == "THIEF")
                 {
                     Console.WriteLine("This race gives a bonus to the following stats:");
                     Console.WriteLine("One Handed Weapons. 2 Point");
@@ -238,56 +236,66 @@ namespace Text_based_adventure_game
 
             //Bonuses:
             //Race Bonus:
-            if (Race == "HUMAN")
+            if (Player_Race == "HUMAN")
             {
                 Player_One_Handed++;
                 Player_Two_Handed++;
                 Player_Ranged_Weapon++;
                 Player_Magic++;
             }
-            if (Race == "DWARF")
+            if (Player_Race == "DWARF")
             {
                 Player_One_Handed++;
                 Player_Two_Handed = Player_Two_Handed + 2;
                 Player_Ranged_Weapon++;
             }
-            if (Race == "ELF")
+            if (Player_Race == "ELF")
             {
                 Player_One_Handed++;
                 Player_Ranged_Weapon = Player_Ranged_Weapon + 2;
                 Player_Magic++;
             }
-            if (Race == "ORC")
+            if (Player_Race == "ORC")
             {
                 Player_One_Handed = Player_One_Handed + 2;
                 Player_Two_Handed = Player_Two_Handed + 2;
             }
             
             //Class Bonus:
-            if (Class == "WARRIOR")
+            if (Player_Class == "WARRIOR")
             {
                 Player_One_Handed = Player_One_Handed + 2;
                 Player_Two_Handed = Player_Two_Handed + 2;
             }
-            if (Class == "HUNTER")
+            if (Player_Class == "HUNTER")
             {
                 Player_One_Handed++;
                 Player_Two_Handed++;
                 Player_Ranged_Weapon = Player_Ranged_Weapon + 2;
             }
-            if (Class == "MAGE")
+            if (Player_Class == "MAGE")
             {
                 Player_One_Handed++;
                 Player_Ranged_Weapon++;
                 Player_Magic = Player_Magic + 2;   
             }
-            if (Class == "THIEF")
+            if (Player_Class == "THIEF")
             {
                 Player_One_Handed = Player_One_Handed + 2;
                 Player_Ranged_Weapon++;
                 Player_Magic++;
             }
 
+
+            //Player description, Writeout
+            Console.Clear();
+            Console.WriteLine("Your Full Character Description, is:");
+            Console.WriteLine("A {0} {1} {2}",Player_Gender, Player_Race, Player_Class);
+            Console.WriteLine("One Handed Weapon Skill Points: {0}", Player_One_Handed);
+            Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
+            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Two_Handed);
+            Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
+            Console.ReadLine();
 
             Inventory[0] = "a"; Inventory[1] = "b" ; Inventory[2] = "snails";
 
@@ -295,7 +303,7 @@ namespace Text_based_adventure_game
             Console.WriteLine ("Inventory Test: type inventory below");
             Input = Console.ReadLine ().ToUpper ();
             //Inventory System:
-            if (Input == "INVENTORY")
+            if (Input == "INVENTORY" || Input == "INV")
             {
                 Console.Clear();
                 Console.WriteLine("Your Inventory contains:");
@@ -311,24 +319,10 @@ namespace Text_based_adventure_game
 
             }
 
-
-
-
-            //random integer between 0 and 100 (100 not included):
-
-
-
-
-            Random random = new Random();
-            int randomNumber = random.Next(0, 100);
-
-
-
-
             //Enemy Declair System:
             Enemy_Name = "Rat";
             Enemy_Health_Points = 12;
-
+            Enemy_Maximum_Damage = 2;
 
 
             //Combat System:
@@ -447,49 +441,156 @@ namespace Text_based_adventure_game
                     Console.ReadLine();
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 //Quest giving system:
+                Quest_Reward_EXP = 20;
+                Quest_Reward_Gold = 50;
+                Player_Quest_Goal = 3;
+                Player_Quest_Enemy = "Rats";
 
-
-
-
-
-
-
-
-
-
-
-
+                do {
+                    correct = 0;
+                    Console.Clear();
+                    if (Player_Quest != " ")
+                    {
+                        Console.WriteLine ("You have to finish your current quest. in order to get a new one.");
+                        correct = 1;
+                    }
+                    if (Player_Quest == " ")
+                    {
+                        Console.WriteLine ("I would gladly pay you to kill the 3 rats thats annoying me, out on my field");
+                        Console.WriteLine ("Reward: {0} Gold, and {1} EXP", Quest_Reward_Gold, Quest_Reward_Gold);
+                        Console.WriteLine ("Accept Yes/No:");
+                        Input = Console.ReadLine ().ToUpper ();
+                        if (Input == "NO")
+                        {
+                            correct = 1;
+                            Quest_Accepted = "NO";
+                        }
+                        if (Input == "YES")
+                        {
+                            Console.WriteLine("The quest has been accepted.");
+                            Player_Quest = "The farmer would gladly pay you 50 and give you 20 EXP, to rid his fields of the 3 rats";
+                            correct = 1;
+                            Quest_Accepted = "YES";
+                        }
+                    }
+                } while(correct == 0);
+                Console.ReadLine ();
 
 
                 //Menu Quest Writeout
+                do {
+                    correct = 0;
+                    Console.Clear();
+                    Console.WriteLine ("Enter Quest, to see your current quest");
+                    Console.WriteLine ("Enter Inventory, to see your Inventory content");
+                    Console.WriteLine ("Enter Status, to see in detail how your character is doing");
+                    Console.WriteLine ("Enter Exit, to quit the Menu");
+                    Input = Console.ReadLine ().ToUpper ();
+                    if (Input == "QUEST" && Player_Quest != " ") {
+                        do {
+                            Console.Clear();
+                            Console.WriteLine (Player_Quest);
+                            Console.WriteLine ("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
+                            Console.WriteLine("< Back");
+                            Input = Console.ReadLine ().ToUpper ();
+                            if (Input == "BACK") {
+                                correct = 1;
+                            }
+                            if (Input != "BACK") {
+                            }
+                        } while(correct == 0);
+                    }
+                    if (Input == "QUEST" && Player_Quest == " ") {
+                        do {
+                            Console.Clear ();
+                            Console.WriteLine ("You do not have any active quests at the moment");
+                            Console.WriteLine ("< back");
+                            Input = Console.ReadLine ().ToUpper ();
+                            if (Input == "BACK") {
+                                correct = 1;
+                            }
+                            if (Input != "BACK") {
+                            }
+                        } while(correct == 0);
+                    }
+                    if (Input == "INVENTORY" || Input == "INV") {
+                        do{
+                        Console.Clear();
+                        Console.WriteLine("Your Inventory contains:");
+                        for (Arraycount = 0; Arraycount < 20; Arraycount++)
+                        {
+                            int inventory_possition = Arraycount +1;
+                            Console.SetCursorPosition (0, inventory_possition);
+                            Console.WriteLine("{0}", Inventory[Arraycount]);
+                        }
+                        Console.WriteLine("< Back");
+                        Input = Console.ReadLine().ToUpper();
+                        if(Input == "BACK")
+                        {correct = 1;}
+                        if(Input != "BACK")
+                        {correct = 0;}
+                    }while(correct == 0);
+                    }
+                    if (Input == "STATUS" || Input == "STATS") {
+                        do{
+                            Console.Clear();
+                            Console.WriteLine ("Your character is:");
+                            Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Class, Player_Class);
+                            Console.WriteLine("One Handed Weapon Skill Points: {0}", Player_One_Handed);
+                            Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
+                            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Two_Handed);
+                            Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
+                            Console.WriteLine("{0} Health Points, {1} Mana Points, {2} Experience Points",Player_Health_Points, Player_Mana_Points, Player_EXP);
+                            Console.WriteLine("< Back");
+                            Input = Console.ReadLine ().ToUpper();
+                            if(Input == "BACK")
+                            {correct = 1;}
+                            if(Input != "BACK")
+                            {correct = 0;}
+                        }while(correct == 0);
+                    }
+                    if(Input == "EXIT")
+                    {correct = 2;}
+                    else {
+                    }
+                } while(correct != 2);
+
+
+                //Tutorial quest, introduction:
+                Console.Clear ();
+                Console.WriteLine ("You have just woken up in what seems like a dungon lock up, with brick walls all around you, with little to no light in some areas. you can skimtout of the bars in front of you.");
+                Console.WriteLine("______________________________________________________");
+                Console.WriteLine ("'Look' around, to see if anything might help you excape.");
+                Console.WriteLine ("'Bars' to shake the bars that is locking you in.")
+                Console.WriteLine ("'Barrel' in the corner seems to be leaking something.");
+                Console.WriteLine ("'Menu' to check your person at this time");
+                Input = Console.ReadLine ().ToUpper ();
+                if (Input == "LOOK") {
+                    if(Player_Checked_For_Item == 0){
+                        do{
+                            Console.WriteLine("It's just a dirty old cell, in what seems to be a basement..");
+                            Console.WriteLine("< Back");
+                            Input = Console.ReadLine().ToUpper();
+                            if(Input == "BACK")
+                            {correct = 1;}
+                            if(Input != "BACK")
+                            {correct = 0;}
+                        }while(correct == 0);
+                    }if(Player_Checked_For_Item == 1)
+                    {
+                        Console.WriteLine("You notice something, you swar it wasn't there before. An old rusty, metal cup. You pick it up, and put it in your inventory");
+                        Inventory{0} = "Old Metal Cup";
+                    }
+                }
+                    }
+                }
 
 
 
 
 
-
-
-
-
-
-
-            Console.ReadLine();
+            Console.ReadLine ();
         }
     }
 }
