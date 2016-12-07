@@ -42,9 +42,6 @@ namespace Text_based_adventure_game
             string Player_Quest = " ";
             string Quest_Accepted;
             string Player_Quest_Enemy;
-
-
-
             //Caracter Creation:
             do {
                 Console.Clear();
@@ -143,13 +140,8 @@ namespace Text_based_adventure_game
                     if(Input == "NO")
                     {
                         correct = 0;
-                    }
-                    
+                    }   
                 }
-                else if (Player_Race != "HUMAN" || Player_Race != "DWARF" || Player_Race != "ELF" || Player_Race != "ORC")
-                {
-                    correct = 0;
-                } 
             } while(correct == 0);
             correct = 0;
             //Class Creation:
@@ -298,13 +290,10 @@ namespace Text_based_adventure_game
             Console.WriteLine("A {0} {1} {2}",Player_Gender, Player_Race, Player_Class);
             Console.WriteLine("One Handed Weapon Skill Points: {0}", Player_One_Handed);
             Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
-            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Two_Handed);
+            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
             Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
-
-
-
-
             /*
             Inventory[0] = "a"; Inventory[1] = "b" ; Inventory[2] = "snails";
 
@@ -466,8 +455,8 @@ namespace Text_based_adventure_game
                     }
                     if (Player_Quest == " ")
                     {
-                        Console.WriteLine ("I would gladly pay you to kill the 3 rats thats annoying me, out on my field");
-                        Console.WriteLine ("Reward: {0} Gold, and {1} EXP", Quest_Reward_Gold, Quest_Reward_Gold);
+                        Console.WriteLine ("I would gladly pay you to kill the 3 rats thats annoying me, out on my fields.");
+                        Console.WriteLine ("Reward: {0} Gold, and {1} EXP", Quest_Reward_Gold, Quest_Reward_EXP);
                         Console.WriteLine ("Accept Yes/No:");
                         Input = Console.ReadLine ().ToUpper ();
                         if (Input == "NO")
@@ -526,7 +515,7 @@ namespace Text_based_adventure_game
                     if (Input == "INVENTORY" || Input == "INV") {
                         do{
                         Console.Clear();
-                        Console.WriteLine("Your Inventory contains:");
+                        Console.WriteLine("Your Inventory Contains:");
                         for (Arraycount = 0; Arraycount < 20; Arraycount++)
                         {
                             int inventory_possition = Arraycount +1;
@@ -541,14 +530,14 @@ namespace Text_based_adventure_game
                         {correct = 0;}
                     }while(correct == 0);
                     }
-                    if (Input == "STATUS" || Input == "STATS") {
+                    if (Input == "STATUS" || Input == "STAT") {
                         do{
                             Console.Clear();
                             Console.WriteLine ("Your character is:");
-                            Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Class, Player_Class);
+                            Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
                             Console.WriteLine("One Handed Weapon Skill Points: {0}", Player_One_Handed);
                             Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
-                            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Two_Handed);
+                            Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
                             Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
                             Console.WriteLine("{0} Health Points, {1} Mana Points, {2} Experience Points",Player_Health_Points, Player_Mana_Points, Player_EXP);
                             Console.WriteLine("< Back");
@@ -564,13 +553,14 @@ namespace Text_based_adventure_game
                     else {
                     }
                 } while(correct != 2);
-                */
 
+                */
                 //Tutorial quest, introduction:
+                do {
                 Console.Clear ();
-                Console.WriteLine ("You have just woken up in what seems like a dungon lock up, with brick walls all around you, with little to no light in some areas. You can skimt out of the bars in front of you, all the way through the room, the set of keys, maybe those are to get you out of this mess?");
+                Console.WriteLine ("You have just woken up in what seems like a dungon lock up, with brick walls all around you, with little to no light in some areas. You can skimtout of the bars in front of you, all the way through the room, the set of keys, maybe those are to get you out of this mess?");
                 Console.WriteLine("______________________________________________________");
-                Console.WriteLine ("'Look' around, to see if anything might help you excape.");
+                Console.WriteLine ("'Look' around, to see if anything might help you escape.");
                 Console.WriteLine ("'Bars' to shake the bars that is locking you in.");
                 Console.WriteLine ("'Barrel' in the corner seems to be leaking something.");
                 Console.WriteLine ("'Menu' to check your person at this time");
@@ -578,273 +568,278 @@ namespace Text_based_adventure_game
                 if (Input == "LOOK") {
                     if(Player_Checked_For_Item == 0){
                         do{
-                        Console.WriteLine("It's just a dirty old cell, in what seems to be a basement..");
+                            Console.WriteLine("It's just a dirty old cell, in what seems to be a basement..");
+                            Console.WriteLine("< Back");
+                            Input = Console.ReadLine().ToUpper();
+                            if(Input == "BACK")
+                            {correct = 1;}
+                            if(Input != "BACK")
+                            {correct = 0;}
+                        }while(correct == 0);
+                    }if(Player_Checked_For_Item == 1)
+                    {
+                        do{
+                        Console.WriteLine("You notice something, you swear it wasn't there before. An old rusty, metal cup. You pick it up, and put it in your inventory");
+                        Inventory[0] = "Old Metal Cup";
                         Console.WriteLine("< Back");
                         Input = Console.ReadLine().ToUpper();
                         if(Input == "BACK")
-                        {correct = 1;}
-                        if(Input != "BACK")
-                        {correct = 0;}
+                            {correct = 1;}
+                            if(Input != "BACK")
+                            {correct = 0;}
                         }while(correct == 0);
-                        }if(Player_Checked_For_Item == 1)
+                    }
+                }
+                    if (Input == "BARS") {
+                        if(Inventory[0] == null){
+                            do{
+                                Console.WriteLine("The bars won't budge, and gave you a weird feeling upon the touch");
+                                Console.WriteLine("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                            }while(correct == 0);
+                        }if(Inventory[0] != null)
                         {
                             do{
-                            Console.WriteLine("You notice something, you swar it wasn't there before. An old rusty, metal cup. You pick it up, and put it in your inventory");
-                            Inventory[0] = "Old Metal Cup";
-                            Console.WriteLine("< Back");
-                            Input = Console.ReadLine().ToUpper();
-                            if(Input == "BACK")
-                            {correct = 1;}
-                            if(Input != "BACK")
-                            {correct = 0;}
+                                Console.WriteLine("The liquid in the cup, might just do the trick here, maybe you can melt the bars with the liquid acid");
+                                Console.WriteLine("'Try'?");
+                                Console.WriteLine("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                                if(Input == "TRY")
+                                {
+                                    do{
+                                        Console.WriteLine("This seems to be working, the bars are slowly melting right in front of you. And you can now finally make your way out of the cell.");
+                                        Player_Quest_Objective_Complete = 1;
+                                        Console.WriteLine("< Continue");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if(Input == "CONTINUE")
+                                        {correct = 3;}
+                                        if(Input != "CONTINUE")
+                                        {correct = 0;}
+                                    }while(correct == 0);
+                                }
                             }while(correct == 0);
                         }
-                }
-                if (Input == "BARS") {
-                    if(Inventory[0] == null) {
-                        do{
-                            Console.WriteLine("The bars won't budge, and gave you a wierd feeling upon the touch");
-                            Console.WriteLine("< Back");
-                            Input = Console.ReadLine().ToUpper();
-                            if(Input == "BACK")
-                            {correct = 1;}
-                            if(Input != "BACK")
-                            {correct = 0;}
-                        }while(correct == 0);
-                    }if(Inventory[0] != null)
-                    {
-                        do{
-                            Console.WriteLine("The liquid in the cup, might just do the trick here, mabe you can melt the bars with the liquid acid");
-                            Console.WriteLine("'Try'?");
-                            Console.WriteLine("< Back");
-                            Input = Console.ReadLine().ToUpper();
-                            if(Input == "BACK")
-                            {correct = 1;}
-                            if(Input != "BACK")
-                            {correct = 0;}
-                            if(Input == "TRY")
-                            {
+                    }
+                            if (Input == "BARREL") {
                                 do{
-                                    Console.WriteLine("This seems to be working, the bars are slowly melting right in front of you. And you can now finally make your way out of the cell");
-                                    Player_Quest_Objective_Complete = 1;
-                                    Console.WriteLine("< Continue");
+                                    Console.WriteLine("The liquid that is leaking out the barrel, burnt a hole in the outer layer of your skin, upon touch.");
+                                    Console.WriteLine("'Take' some?");
+                                    Console.WriteLine("< Back");
                                     Input = Console.ReadLine().ToUpper();
-                                    if(Input == "CONTINUE")
+                                    if(Input == "BACK")
                                     {correct = 1;}
-                                    if(Input != "CONTINUE")
+                                    if(Input != "BACK")
                                     {correct = 0;}
+                                    if(Input == "TAKE" && Inventory[0] == null)
+                                    {
+                                        do{
+                                            Console.WriteLine("You have nothing to carry, the liquid with");
+                                            Console.WriteLine("< Back");
+                                            Input = Console.ReadLine().ToUpper();
+                                            if(Input == "BACK")
+                                            {correct = 1;}
+                                            if(Input != "BACK")
+                                            {correct = 0;}
+                                        }while(correct == 0);
+                                        Player_Checked_For_Item = 1;
+                                    }
+                                    if(Input == "TAKE" && Inventory[0] != null)
+                                    {
+                                        do{
+                                            Console.WriteLine("The cup in your inventory, would do just fine, to hold the liquid, but not for long");
+                                            Console.WriteLine("< Back");
+                                            Input = Console.ReadLine().ToUpper();
+                                            if(Input == "BACK")
+                                            {correct = 1;}
+                                            if(Input != "BACK")
+                                            {correct = 0;}
+                                        }while(correct == 0);
+                                    }
                                 }while(correct == 0);
                             }
-                        }while(correct == 0);
-                    }
-                }
-                if (Input == "BARREL")
-                do{
-                    Console.WriteLine("The liquid that is leaking out the barrel, burnt a hole in the outer layer of your skin, upon touch.");
-                    Console.WriteLine("'Take' some?");
-                    Console.WriteLine("< Back");
-                    Input = Console.ReadLine().ToUpper();
-                    if(Input == "BACK")
-                    {correct = 1;}
-                    if(Input != "BACK")
-                    {correct = 0;}
-                    if(Input == "TAKE" && Inventory[0] == null)
-                    {
-                        do{
-                            Console.WriteLine("You have nothing to carry, the liquid with");
-                            Console.WriteLine("< Back");
+                            if (Input == "MENU") {
+                                correct = 0;
+                                Console.WriteLine("Enter Quest, to see your current quest");
+                                Console.WriteLine ("Enter Inventory, to see your current Inventory content");
+                                Console.WriteLine ("Enter Status, to see in detail how your character is doing");
+                                Console.WriteLine ("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if (Input == "QUEST" && Player_Quest != " ") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine (Player_Quest);
+                                        Console.WriteLine("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
+                                        Console.WriteLine("< Back");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "QUEST" && Player_Quest == " ") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine("You do not have any active quests at the moment");
+                                        Console.WriteLine("< back");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "INVENTORY" || Input == "INV") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine("Your Inventory Contains:");
+                                        for (Arraycount = 0; Arraycount < 20; Arraycount++) {
+                                            int inventory_possition = Arraycount + 1;
+                                            Console.SetCursorPosition (0, inventory_possition);
+                                            Console.WriteLine ("{0}", Inventory [Arraycount]);
+                                        }
+                                        Console.WriteLine ("< Back");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                            correct = 0;
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "STATUS" || Input == "STAT") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine ("Your character is:");
+                                        Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
+                                        Console.WriteLine("One Handed Weapon Skill points: {0}", Player_Class);
+                                        Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
+                                        Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
+                                        Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
+                                        Console.WriteLine ("{0} Health Points, {1} Mana Points, {2} Experience Points", Player_Health_Points, Player_Mana_Points, Player_EXP);
+                                        Console.WriteLine ("< Back");
+                                        Input = Console.ReadLine ().ToUpper ();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                            correct = 0;
+                                        }
+                                    }while(correct == 0);
+                                }
+                               if (Input == "BACK") {
+                                   correct = 2;
+                               } else {
+                               }
+                            }
+                        } while(correct != 3);
+                        do {
+                            Console.WriteLine ("You make your way through the bars, leaving the cell behind you. This is now even more weard, he room apears to have just changed right before your eyes. A stair case just appeared out of nowhere.");
+                            Console.WriteLine ("Go up the 'Stairs'?");
+                            Console.WriteLine ("'Look' around you?");
+                            Console.WriteLine ("'Menu' to check your person at this time");
                             Input = Console.ReadLine().ToUpper();
-                            if(Input == "BACK")
-                            {correct = 1;}
-                            if(Input != "BACK")
-                            {correct = 0;}
-                        }while(correct == 0);
-                        Player_Checked_For_Item = 1;
-                    }
-                    if(Input == "TAKE" && Inventory[0] != null)
-                    {
-                        do{
-                            Console.WriteLine("The cup in your inventory, would do just fine, to hold the liquid, but not for long");
-                            Console.WriteLine("< Back");
-                            Input = Console.ReadLine().ToUpper();
-                            if(Input == "BACK")
-                            {correct = 1;}
-                            if(Input != "BACK")
-                            {correct = 0;}
-                        }while(correct == 0);
-                    }
-                }while(correct == 0);
-            }
-            if (Input == "MENU") {
-					correct = 0;
-					Console.WriteLine ("Enter Quest, to see your current quest");
-					Console.WriteLine ("Enter Inventory, to see your Inventory content");
-					Console.WriteLine ("Enter Status, to see in detail how your character is doing");
-					Console.WriteLine ("< Back");
-					Input = Console.ReadLine().ToUpper();
-					if (Input == "QUEST" && Player_Quest != " ") {
-						do {
-							Console.Clear();
-							Console.WriteLine (Player_Quest);
-							Console.WriteLine ("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-							}
-						} while(correct == 0);
-					}
-					if (Input == "QUEST" && Player_Quest == " ") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("You do not have any active quests at the moment");
-							Console.WriteLine ("< back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-							}
-						} while(correct == 0);
-					}
-					if (Input == "INVENTORY" || Input == "INV") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("Your Inventory Contains:");
-							for (Arraycount = 0; Arraycount < 20; Arraycount++) {
-								int inventory_possition = Arraycount + 1;
-								Console.SetCursorPosition (0, inventory_possition);
-								Console.WriteLine ("{0}", Inventory [Arraycount]);
-							}
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-								correct = 0;
-							}
-						} while(correct == 0);
+                            if (Input == "STAIRS")
+                            {
+                                correct = 0;
+                                Console.WriteLine("You make your way up the stairs, you find your self facing in a four way tunel. North, East, South, West.");
+                                Console.WriteLine("Go 'North'?");
+                                Console.WriteLine("Go 'East'?");
+                                Console.WriteLine("Go 'South'?");
+                                Console.WriteLine("Go 'West'?");
+                            }
+                            if (Input == "MENU") {
+                                correct = 0;
+                                Console.WriteLine("Enter Quest, to see your current quest");
+                                Console.WriteLine("Enter Inventory, to see your Inventory content");
+                                Console.WriteLine ("Enter Status, to see in detail how your character is doing");
+                                Console.WriteLine ("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if (Input == "QUEST" && Player_Quest != " ") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine (Player_Quest);
+                                        Console.WriteLine ("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
+                                        Console.WriteLine ("< Back");
+                                        Input = Console.ReadLine ().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if( Input != "BACK") {
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "QUEST" && Player_Quest == " ") {
+                                    do {
+                                        Console.Clear ();
+                                        Console.WriteLine ("You do not have any active quests at the moment");
+                                        Console.WriteLine ("< back");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "INVENTORY" || Input == "INV") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine ("Your Inventory Contains:");
+                                        for (Arraycount = 0; Arraycount < 20; Arraycount++) {
+                                            int inventory_possition = Arraycount + 1;
+                                            Console.SetCursorPosition (0, inventory_possition);
+                                            Console.WriteLine ("{0}", Inventory [Arraycount]);
+                                        }
+                                        Console.WriteLine ("< Back");
+                                        Input = Console.ReadLine().ToUpper();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                            correct = 0;
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "STATUS" || Input == "STAT") {
+                                    do {
+                                        Console.Clear();
+                                        Console.WriteLine ("Your character is:");
+                                        Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
+                                        Console.WriteLine ("One Handed Weapon Skill Points: {0}", Player_One_Handed);
+                                        Console.WriteLine ("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
+                                        Console.WriteLine ("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
+                                        Console.WriteLine ("Magical Attack Skill Points: {0}", Player_Magic);
+                                        Console.WriteLine ("{0} Health Points, {1} Mana Points, {2} Experience Points", Player_Health_Points, Player_Mana_Points, Player_EXP);
+                                        Console.WriteLine ("< Back");
+                                        Input = Console.ReadLine ().ToUpper ();
+                                        if (Input == "BACK") {
+                                            correct = 1;
+                                        }
+                                        if (Input != "BACK") {
+                                            correct = 0;
+                                        }
+                                    }while(correct == 0);
+                                }
+                                if (Input == "BACK") {
+                                    correct = 2;
+                                } else {
+                                }
+                        }
+                    } while(correct == 0);
 
-					}
-					if (Input == "STATUS" || Input == "STAT") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("You character is:");
-							Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
-							Console.WriteLine ("One Handed Weapon Skill Points: {0}", Player_One_Handed);
-							Console.WriteLine ("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
-							Console.WriteLine ("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
-							Console.WriteLine ("Magical Attack Skill Points: {0}", Player_Magic);
-							Console.WriteLine ("{0} Health Points, {1} Mana Points, {2} Experience Points", Player_Health_Points, Player_Mana_Points, Player_EXP);
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-								correct = 0;
-							}
-						} while(correct == 0);
-					}
-					if (Input == "BACK") {
-						correct = 2;
-					} else {
-					}
-				}
-			} while(correct != 3);
-			do {
-				Console.WriteLine ("You make your way through the bars, leaving the cell behind you. This is now even more wierd, the room apears to have just changed right before your eyes. A stair case just appeared out of nowhere.");
-				Console.WriteLine ("Go up the 'Stairs'?");
-				Console.WriteLine ("'Look' around you?");
-				Console.WriteLine ("'Menu' to check your person at this time");
-				Input = Console.ReadLine ().ToUpper ();
-				if (Input == "MENU") {
-					correct = 0;
-					Console.WriteLine ("Enter Quest, to see your current quest");
-					Console.WriteLine ("Enter Inventory, to see your Inventory content");
-					Console.WriteLine ("Enter Status, to see the stats of your character");
-					Console.WriteLine ("< Back");
-					Input = Console.ReadLine ().ToUpper ();
-					if (Input == "QUEST" && Player_Quest != " ") {
-						do {
-							Console.Clear ();
-							Console.WriteLine (Player_Quest);
-							Console.WriteLine ("Progress: {0}/{1} {2}", Player_Quest_Progress, Player_Quest_Goal, Player_Quest_Enemy);
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-							}
-						} while(correct == 0);
-					}
-					if (Input == "QUEST" && Player_Quest == " ") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("You don not have any active quests at the moment");
-							Console.WriteLine ("< back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-							}
-						} while(correct == 0);
-					}
-					if (Input == "INVENTORY" || Input == "INV") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("Your Inventory Contains:");
-							for (Arraycount = 0; Arraycount < 20; Arraycount++) {
-								int inventory_possition = Arraycount + 1;
-								Console.SetCursorPosition (0, inventory_possition);
-								Console.WriteLine ("{0}", Inventory [Arraycount]);
-							}
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-								correct = 0;
-							}
-						} while(correct == 0);
-
-					}
-					if (Input == "STATUS" || Input == "STAT") {
-						do {
-							Console.Clear ();
-							Console.WriteLine ("You character is:");
-							Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
-							Console.WriteLine ("One Handed Weapon Skill Points: {0}", Player_One_Handed);
-							Console.WriteLine ("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
-							Console.WriteLine ("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
-							Console.WriteLine ("Magical Attack Skill Points: {0}", Player_Magic);
-							Console.WriteLine ("{0} Health Points, {1} Mana Points, {2} Experience Points", Player_Health_Points, Player_Mana_Points, Player_EXP);
-							Console.WriteLine ("< Back");
-							Input = Console.ReadLine ().ToUpper ();
-							if (Input == "BACK") {
-								correct = 1;
-							}
-							if (Input != "BACK") {
-								correct = 0;
-							}
-						} while(correct == 0);
-					}
-					if (Input == "BACK") {
-						correct = 2;
-					} else {
-					}
-				}
-			} while(correct == 0);
-
-			Console.ReadLine ();
-
-
-		}
-	}
+            Console.ReadLine ();
+        }
+    }
 }
