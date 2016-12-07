@@ -750,14 +750,47 @@ namespace Text_based_adventure_game
                             Console.WriteLine ("'Look' around you?");
                             Console.WriteLine ("'Menu' to check your person at this time");
                             Input = Console.ReadLine().ToUpper();
-                            if (Input == "STAIRS")
-                            {
+                            if (Input == "STAIRS") {
+                                do{
                                 correct = 0;
-                                Console.WriteLine("You make your way up the stairs, you find your self facing in a four way tunel. North, East, South, West.");
+                                Console.WriteLine("You make your way up the stairs, you find your self in a four way tunel. North, East, South, West.");
+                                Console.WriteLine("'Look' around you?");
+                                Console.WriteLine("'Menu' to check your person at this time");
                                 Console.WriteLine("Go 'North'?");
                                 Console.WriteLine("Go 'East'?");
                                 Console.WriteLine("Go 'South'?");
                                 Console.WriteLine("Go 'West'?");
+                                Console.WriteLine("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                            }while(correct == 0);
+                            }
+                            if (Input == "EAST") {
+                                Console.WriteLine("You head down the east tunel. You come to more stairs that leads up. You think to your self man how many stairs are in this place?");
+                                Console.WriteLine("< Back");
+                            }
+                            if (Input == "SOUTH") {
+                                Console.WriteLine("You head down the south tunel. You see light at the end of this tunel, when you cross the light you find your self in a surgical room.");
+                                Console.WriteLine("You are extreamly confused at why there would be a surgery room where ever you are.");
+                                Console.WriteLine("< Back");
+                            }
+                            if (Input == "WEST")
+                            {
+                                Console.WriteLine("You head down the west tunel. ");
+                            }
+                            if (Input == "NORTH") {
+                                Console.WriteLine("You head down the north tunel. You find your self facing a sold wood door, you can hear something on the other side.");
+                                Console.WriteLine ("'Open' door?");
+                                Console.WriteLine ("< Back");
+                            }
+                            if (Input == "OPEN") {
+                                Console.WriteLine("You open the door, you find your self in a brightly lit guard room. And you are not alone, you see that there are at least half a dozen guards in the room.");
+                                Console.WriteLine("'Run'?");
+                                Console.WriteLine("'Fight'?");
+                                Console.WriteLine("< Back");
                             }
                             if (Input == "MENU") {
                                 correct = 0;
