@@ -723,7 +723,7 @@ namespace Text_based_adventure_game
                                         Console.Clear();
                                         Console.WriteLine ("Your character is:");
                                         Console.WriteLine ("A {0} {1} {2}", Player_Gender, Player_Race, Player_Class);
-                                        Console.WriteLine("One Handed Weapon Skill points: {0}", Player_Class);
+                                        Console.WriteLine("One Handed Weapon Skill points: {0}", Player_One_Handed);
                                         Console.WriteLine("Two Handed Weapon Skill Points: {0}", Player_Two_Handed);
                                         Console.WriteLine("Ranged Weapon Skill Points: {0}", Player_Ranged_Weapon);
                                         Console.WriteLine("Magical Attack Skill Points: {0}", Player_Magic);
@@ -745,21 +745,24 @@ namespace Text_based_adventure_game
                             }
                         } while(correct != 3);
                         do {
-                            Console.WriteLine ("You make your way through the bars, leaving the cell behind you. This is now even more weard, he room apears to have just changed right before your eyes. A stair case just appeared out of nowhere.");
+                            Console.WriteLine ("You make your way through the bars, leaving the cell behind you. This is now even more weard, the room apears to have just changed right before your eyes. A stair case just appeared out of nowhere.");
                             Console.WriteLine ("Go up the 'Stairs'?");
-                            Console.WriteLine ("'Look' around you?");
                             Console.WriteLine ("'Menu' to check your person at this time");
                             Input = Console.ReadLine().ToUpper();
                             if (Input == "STAIRS") {
                                 do{
+                                Console.Clear();
                                 correct = 0;
                                 Console.WriteLine("You make your way up the stairs, you find your self in a four way tunel. North, East, South, West.");
-                                Console.WriteLine("'Look' around you?");
                                 Console.WriteLine("'Menu' to check your person at this time");
                                 Console.WriteLine("Go 'North'?");
                                 Console.WriteLine("Go 'East'?");
                                 Console.WriteLine("Go 'South'?");
                                 Console.WriteLine("Go 'West'?");
+                                Input = Console.ReadLine().ToUpper();
+                        if (Input == "EAST") {
+                            do{
+                                Console.WriteLine("You head down the east tunel. You come to more stairs that leads up. You think to your self man how many stairs does this place have?");
                                 Console.WriteLine("< Back");
                                 Input = Console.ReadLine().ToUpper();
                                 if(Input == "BACK")
@@ -767,31 +770,85 @@ namespace Text_based_adventure_game
                                 if(Input != "BACK")
                                 {correct = 0;}
                             }while(correct == 0);
-                            }
-                            if (Input == "EAST") {
-                                Console.WriteLine("You head down the east tunel. You come to more stairs that leads up. You think to your self man how many stairs are in this place?");
-                                Console.WriteLine("< Back");
-                            }
+                        }
                             if (Input == "SOUTH") {
-                                Console.WriteLine("You head down the south tunel. You see light at the end of this tunel, when you cross the light you find your self in a surgical room.");
-                                Console.WriteLine("You are extreamly confused at why there would be a surgery room where ever you are.");
+                                do{
+                                Console.WriteLine("You head down the south tunel. You come to a archway, in the room there are perhaps hundreds of rats down in a circular depresion. The walls are carved with symbols that you vaguly recongize.");
+                                Console.WriteLine("'Translate'");
                                 Console.WriteLine("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                                if(Input == "TRANSLATE")
+                                {
+                                    do{
+                                         Console.WriteLine("You are able to translate them, you find that they spell: a c c o r d i n g t o t h e i r f a i t h i n g o d.");
+                                         Console.WriteLine("'Rearange'");
+                                         Console.WriteLine("< Back");
+                                         Input = Console.ReadLine().ToUpper();
+                                         if(Input == "BACK")
+                                         {correct = 1;}
+                                         if(Input != "BACK")
+                                         {correct = 0;}
+                                         if(Input == "REARANGE")
+                                         {
+                                             do{
+                                                 Console.WriteLine("You are able to spell liahona. You are able to get accross the rat pit without falling in to get across.");
+                                             }while(correct == 0);
+                                         }
+                                    }while(correct == 0);
+                                }
+                            }while(correct == 0);
                             }
-                            if (Input == "WEST")
+                            if (Input == "WEST") {
+                            do{
                             {
-                                Console.WriteLine("You head down the west tunel. ");
+                                Console.WriteLine("You head down the west tunel. You find a door, and you can feel a breze coming from it.");
+                                Console.WriteLine("'Open'?");
+                                Console.WriteLine("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                                if(Input == "OPEN") 
+                                {
+                            do {
+                                Console.WriteLine("You find your self outside! You have finally escape. You look behind you to find were you were. You are shocked to find that you just escaped from a giants body.");
+                                 Console.WriteLine("You win");
+                                 Player_Quest_Objective_Complete = 1;
+                                 Input = Console.ReadLine().ToUpper();
+                                 if(Input == "YOU WIN")
+                                 {correct = 3;}
+                                 if(Input != "YOU WIN")
+                                 {correct = 0;}
+                            }while(correct == 0);
+                                }
+                            }
+                                }while(correct == 0);
                             }
                             if (Input == "NORTH") {
+                                do{
                                 Console.WriteLine("You head down the north tunel. You find your self facing a sold wood door, you can hear something on the other side.");
                                 Console.WriteLine ("'Open' door?");
                                 Console.WriteLine ("< Back");
+                                Input = Console.ReadLine().ToUpper();
+                                if(Input == "BACK")
+                                {correct = 1;}
+                                if(Input != "BACK")
+                                {correct = 0;}
+                                }while(correct == 0);
                             }
-                            if (Input == "OPEN") {
+                        if (Input == "OPEN") {
+                            do{
                                 Console.WriteLine("You open the door, you find your self in a brightly lit guard room. And you are not alone, you see that there are at least half a dozen guards in the room.");
                                 Console.WriteLine("'Run'?");
                                 Console.WriteLine("'Fight'?");
-                                Console.WriteLine("< Back");
-                            }
+                               Input = Console.ReadLine().ToUpper();
+                            }while(correct == 0);
+                        }
                             if (Input == "MENU") {
                                 correct = 0;
                                 Console.WriteLine("Enter Quest, to see your current quest");
@@ -873,6 +930,8 @@ namespace Text_based_adventure_game
                     } while(correct == 0);
 
             Console.ReadLine ();
-        }
-    }
+        }while(correct == 0);
+    }while(correct == 0);
+}
+}
 }
